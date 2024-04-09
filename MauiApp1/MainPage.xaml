@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage">
+
+    <VerticalStackLayout Spacing="25" Padding="20">
+
+        <!-- Header with "Messages" Label -->
+        <Label Text="Messages" FontSize="30" HorizontalOptions="Center" />
+        
+        <!-- All Messages and Search Box -->
+        <HorizontalStackLayout>
+            <Label Text="All Messages" FontSize="18" HorizontalOptions="StartAndExpand" Padding="10" />
+            <SearchBar Placeholder="Search" HorizontalOptions="EndAndExpand" WidthRequest="200" />
+        </HorizontalStackLayout>
+        
+        <!-- Dyanmic list of users -->
+        <CollectionView x:Name="ContactList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="Auto,Auto,Auto">
+                        <Image Grid.Column="0" />
+                        <VerticalStackLayout Grid.Column="1">
+                            
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2">
+                            
+                        </VerticalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+
+</ContentPage>
