@@ -39,7 +39,7 @@ namespace MauiApp1.Model
             List<Chat> chats = this.GetChatsSortedByLastMessageTimeStamp(userId);
             foreach (Chat chat in chats)
             {
-                User? u = repo.GetUser(userId);
+                User? u = repo.GetUser(chat.receiverId);
                 if (u == null)
                 {
                     continue;

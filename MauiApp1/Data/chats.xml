@@ -18,7 +18,32 @@
 				<MessageId>2</MessageId>
 				<ChatId>1</ChatId>
 				<SenderId>2</SenderId>
-				<Timestamp>4/9/2024 12:03:58 PM</Timestamp>
+				<Timestamp>4/9/2024 11:04:53 PM</Timestamp>
+				<Content>Bine, tu?</Content>
+				<Status>Received</Status>
+				<Type>text</Type>
+			</Message>
+		</Messages>
+	</Chat>
+	<Chat>
+		<ChatId>1</ChatId>
+		<SenderId>1</SenderId>
+		<ReceiverId>3</ReceiverId>
+		<Messages>
+			<Message>
+				<MessageId>1</MessageId>
+				<ChatId>1</ChatId>
+				<SenderId>1</SenderId>
+				<Timestamp>4/9/2024 11:23:58 PM</Timestamp>
+				<Content>Salut, ce faci?</Content>
+				<Status>Seen</Status>
+				<Type>text</Type>
+			</Message>
+			<Message>
+				<MessageId>2</MessageId>
+				<ChatId>1</ChatId>
+				<SenderId>3</SenderId>
+				<Timestamp>4/9/2024 11:24:53 PM</Timestamp>
 				<Content>Bine, tu?</Content>
 				<Status>Received</Status>
 				<Type>text</Type>

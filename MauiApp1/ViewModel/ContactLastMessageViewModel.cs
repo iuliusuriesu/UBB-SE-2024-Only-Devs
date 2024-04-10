@@ -21,7 +21,7 @@ namespace MauiApp1.ViewModel
             ContactLastMessages = new ObservableCollection<ContactLastMessage>(service.ContactLastMessages(userId));
             /*ContactLastMessages = new ObservableCollection<ContactLastMessage>
             {
-                new ContactLastMessage("Iulius Uriesu", "iulius.png", "Salut!", "13:45", "Sent")
+                new("Iulius", "iulius.png", "Salut", "13:03", "Sent")
             };*/
         }
     }

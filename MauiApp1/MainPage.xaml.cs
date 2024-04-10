@@ -12,8 +12,8 @@ namespace MauiApp1
 
         public MainPage()
         {
-            string usersFilePath = "Data/users.xml";
-            string chatsFilePath = "Data/chats.xml";
+            string usersFilePath = "MauiApp1.Data.users.xml";
+            string chatsFilePath = "MauiApp1.Data.chats.xml";
             repo = new Repository(usersFilePath, chatsFilePath);
             service = new Service(repo);
 

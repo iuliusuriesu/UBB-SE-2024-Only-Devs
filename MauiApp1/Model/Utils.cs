@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -12,17 +13,17 @@ namespace MauiApp1.Model
         public static List<User> ReadUsersFromXml(string filePath)
         {
             List<User> users = new List<User>();
-
-            try
+            var assembly = Assembly.GetExecutingAssembly();
+            using (Stream? stream = assembly.GetManifestResourceStream(filePath))
             {
-                if (!File.Exists(filePath))
+                if (stream == null)
                 {
                     Console.WriteLine($"File not found: {filePath}");
                     return users;
                 }
 
 
-                using (XmlTextReader reader = new XmlTextReader(filePath))
+                using (XmlTextReader reader = new XmlTextReader(stream))
                 {
 
                     while (reader.Read())
@@ -67,10 +68,6 @@ namespace MauiApp1.Model
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error reading XML file: {ex.Message}");
             }
 
             return users;
@@ -161,16 +158,16 @@ namespace MauiApp1.Model
         public static List<Chat> ReadChatsFromXml(string filePath)
         {
             List<Chat> chats = new List<Chat>();
-
-            try
+            var assembly = Assembly.GetExecutingAssembly();
+            using (Stream? stream = assembly.GetManifestResourceStream(filePath))
             {
-                if (!File.Exists(filePath))
+                if (stream == null)
                 {
                     Console.WriteLine($"File not found: {filePath}");
                     return chats;
                 }
 
-                using (XmlReader reader = XmlReader.Create(filePath))
+                using (XmlReader reader = XmlReader.Create(stream))
                 {
                     while (reader.Read())
                     {
@@ -219,10 +216,6 @@ namespace MauiApp1.Model
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error reading XML file: {ex.Message}");
             }
 
             return chats;
