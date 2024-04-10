@@ -9,8 +9,6 @@ namespace MauiApp1
         {
             InitializeComponent();
 
-            Repository repo = new Repository("Data/users.xml", "Data/chats.xml");
-
             this.BindingContext = new UserMessageViewModel();
         }
     }
