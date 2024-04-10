@@ -6,8 +6,23 @@ using System.Threading.Tasks;
 
 namespace MauiApp1.Model
 {
-    public interface Message
+    public abstract class Message
     {
+        protected int messageId;
+        protected int chatId;
+        protected int senderId;
+        protected DateTime timestamp;
+        protected string status;
 
+        public Message(int messageId, int chatId, int senderId, DateTime timestamp, string status)
+        {
+            this.messageId = messageId;
+            this.chatId = chatId;
+            this.senderId = senderId;
+            this.timestamp = timestamp;
+            this.status = status;
+        }
+
+        public abstract string GetMessage();
     }
 }
