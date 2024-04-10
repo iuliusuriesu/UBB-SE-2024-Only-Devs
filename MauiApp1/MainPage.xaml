@@ -28,13 +28,13 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <Frame Grid.Column="0" WidthRequest="60" HeightRequest="60"
-                                   HorizontalOptions="Center" VerticalOptions="Center" IsClippedToBounds="True"
-                                   CornerRadius="30" Margin="0,0,15,0">
-                                    <Image Source="{Binding ProfilePhotoPath}" WidthRequest="100" HeightRequest="100"
-                                       HorizontalOptions="Start"  VerticalOptions="Start" />
-                                </Frame>
-                            <VerticalStackLayout Grid.Column="1" Spacing="3">
+                                <Border Grid.Column="0" WidthRequest="60" HeightRequest="60"
+                                        Stroke="Transparent" StrokeShape="RoundRectangle 30"
+                                        Margin="0,0,15,0">
+                                    <Image Source="{Binding ProfilePhotoPath}" Aspect="AspectFill" />
+                                </Border>
+                                
+                                <VerticalStackLayout Grid.Column="1" Spacing="3">
                                 <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="22" />
                                 <Label Text="{Binding Message}" FontSize="16" />
                             </VerticalStackLayout>
