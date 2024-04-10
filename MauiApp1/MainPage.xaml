@@ -3,34 +3,53 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.MainPage">
 
+    <ScrollView>
     <VerticalStackLayout Spacing="25" Padding="20">
 
         <!-- Header with "Messages" Label -->
         <Label Text="Messages" FontSize="30" HorizontalOptions="Center" />
-        
+
         <!-- All Messages and Search Box -->
-        <HorizontalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="FillAndExpand" Spacing="50">
             <Label Text="All Messages" FontSize="18" HorizontalOptions="StartAndExpand" Padding="10" />
             <SearchBar Placeholder="Search" HorizontalOptions="EndAndExpand" WidthRequest="200" />
         </HorizontalStackLayout>
-        
+
         <!-- Dyanmic list of users -->
-        <CollectionView x:Name="ContactList">
+        <CollectionView x:Name="ContactList" ItemsSource="{Binding UserMessages}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid ColumnDefinitions="Auto,Auto,Auto">
-                        <Image Grid.Column="0" />
-                        <VerticalStackLayout Grid.Column="1">
-                            
-                        </VerticalStackLayout>
-                        <VerticalStackLayout Grid.Column="2">
-                            
-                        </VerticalStackLayout>
-                    </Grid>
+                    <VerticalStackLayout>
+                        <BoxView Color="LightGray" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Frame Grid.Column="0" WidthRequest="60" HeightRequest="60"
+                                   HorizontalOptions="Center" VerticalOptions="Center" IsClippedToBounds="True"
+                                   CornerRadius="30" Margin="0,0,15,0">
+                                    <Image Source="{Binding ProfilePhotoPath}" WidthRequest="100" HeightRequest="100"
+                                       HorizontalOptions="Start"  VerticalOptions="Start" />
+                                </Frame>
+                            <VerticalStackLayout Grid.Column="1" Spacing="3">
+                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="22" />
+                                <Label Text="{Binding Message}" FontSize="16" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="2" Spacing="5">
+                                <Label Text="{Binding Time}" HorizontalTextAlignment="End" />
+                                <Label Text="{Binding Status}" HorizontalTextAlignment="End" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
     </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>
+    

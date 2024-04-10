@@ -1,10 +1,14 @@
-﻿namespace MauiApp1
+﻿using System.Collections.ObjectModel;
+
+namespace MauiApp1
 {
     public partial class MainPage : ContentPage
     {
         public MainPage()
         {
             InitializeComponent();
+
+            this.BindingContext = new UserMessageViewModel();
         }
     }
 
