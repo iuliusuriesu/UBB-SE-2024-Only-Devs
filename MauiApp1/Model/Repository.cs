@@ -38,5 +38,10 @@ namespace MauiApp1.Model
 
             return chats;
         }
+
+        public List<Chat> getChatsByUser(int userId)
+        {
+            return chatsByUser[userId];
+        }
     }
 }
