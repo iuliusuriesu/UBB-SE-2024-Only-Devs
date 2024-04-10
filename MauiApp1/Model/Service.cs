@@ -15,18 +15,21 @@ namespace MauiApp1.Model
         public Service(Repository repo)
         {
             this.repo = repo;
+            foreach (Chat chat in repo.GetAllChats())
+            {
+                SortChatMessages(chat);
+            }
         }
 
         public List<Chat> GetChatsSortedByLastMessageTimeStamp(int userId)
         {
-            List<Chat> result = repo.GetChatsByUser(userId);
-
-            return result;
+            return repo.GetChatsByUser(userId).OrderByDescending(chat => chat.getLastMessage().GetTimestamp()).ToList();
         }
 
         public void SortChatMessages(Chat chat)
         {
-
+            List<Message> sortedMessages = chat.getAllMessages().OrderBy(message => message.GetTimestamp()).ToList();
+            chat.setMessageList(sortedMessages);
         }
 
         public List<ContactLastMessage> ContactLastMessages(int userId)

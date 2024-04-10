@@ -36,5 +36,10 @@ namespace MauiApp1.Model
         {
             return allUsers.Find(user => user.userId == userId);
         }
+
+        public List<Chat> GetAllChats()
+        {
+            return allChats;
+        }
     }
 }
