@@ -11,21 +11,14 @@ namespace MauiApp1.Model
     {
         List<User> allUsers;
         List<Chat> allChats;
-        Dictionary<int, List<Chat>> chatsByUser;
 
         public Repository(string usersFilePath, string chatsFilePath)
         {
             allUsers = Utils.ReadUsersFromXml(usersFilePath);
             allChats = Utils.ReadChatsFromXml(chatsFilePath);
-
-            chatsByUser = new Dictionary<int, List<Chat>>();
-            foreach (User user in allUsers)
-            {
-                chatsByUser[user.userId] = assignChatsToUser(user.userId);
-            }
         }
 
-        private List<Chat> assignChatsToUser(int userId)
+        public List<Chat> GetChatsByUser(int userId)
         {
             List<Chat> chats = new List<Chat>();
             foreach (Chat chat in allChats)
@@ -39,9 +32,9 @@ namespace MauiApp1.Model
             return chats;
         }
 
-        public List<Chat> getChatsByUser(int userId)
+        public User? GetUser(int userId)
         {
-            return chatsByUser[userId];
+            return allUsers.Find(user => user.userId == userId);
         }
     }
 }

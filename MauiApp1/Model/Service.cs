@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MauiApp1.ViewModel;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,17 +17,38 @@ namespace MauiApp1.Model
             this.repo = repo;
         }
 
-        public List<Chat> GetUserChatsSortedByTimestamp(int userId)
+        public List<Chat> GetChatsSortedByLastMessageTimeStamp(int userId)
         {
-            return repo.getChatsByUser(userId).OrderByDescending(chat => chat.getLastMessage().GetTimestamp()).ToList();
+            List<Chat> result = repo.GetChatsByUser(userId);
+
+            return result;
         }
 
-        public static List<Message> SortChatMessages(Chat chat)
+        public void SortChatMessages(Chat chat)
         {
-            List<Message> sortedMessages = chat.getAllMessages().OrderByDescending(message => message.GetTimestamp()).ToList();
-            chat.setMessageList(sortedMessages);
 
-            return sortedMessages;
+        }
+
+        public List<ContactLastMessage> ContactLastMessages(int userId)
+        {
+            List<ContactLastMessage> result = new List<ContactLastMessage>();
+
+            List<Chat> chats = this.GetChatsSortedByLastMessageTimeStamp(userId);
+            foreach (Chat chat in chats)
+            {
+                User? u = repo.GetUser(userId);
+                if (u == null)
+                {
+                    continue;
+                }
+
+                Message m = chat.getLastMessage();
+                DateTime dt = m.GetTimestamp();
+                ContactLastMessage clm = new ContactLastMessage(u.name, u.profilePhotoPath, m.GetMessage(), dt.ToString(), m.GetStatus());
+                result.Add(clm);
+            }
+
+            return result;
         }
     }
 }

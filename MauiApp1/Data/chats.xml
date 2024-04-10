@@ -1,157 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Chats>
-  <Chat>
-    <ChatId>1</ChatId>
-    <SenderId>101</SenderId>
-    <ReceiverId>102</ReceiverId>
-    <Messages>
-      <Message>
-        <MessageId>1</MessageId>
-        <ChatId>1</ChatId>
-        <SenderId>101</SenderId>
-        <Timestamp>4/9/2024 11:03:58 PM</Timestamp>
-        <Content>Hello!</Content>
-        <Status>Sent</Status>
-        <Type>video</Type>
-      </Message>
-      <Message>
-        <MessageId>2</MessageId>
-        <ChatId>1</ChatId>
-        <SenderId>102</SenderId>
-        <Timestamp>4/9/2024 12:03:58 PM</Timestamp>
-        <Content>file/path</Content>
-        <Status>Received</Status>
-        <Type>voice</Type>
-      </Message>
-    </Messages>
-  </Chat>
-  <Chat>
-    <ChatId>2</ChatId>
-    <SenderId>102</SenderId>
-    <ReceiverId>101</ReceiverId>
-    <Messages>
-      <Message>
-        <MessageId>3</MessageId>
-        <ChatId>2</ChatId>
-        <SenderId>101</SenderId>
-        <Timestamp>4/9/2024 11:04:23 PM</Timestamp>
-        <Content>Hello!</Content>
-        <Status>Sent</Status>
-        <Type>text</Type>
-        <Type>message</Type>
-      </Message>
-      <Message>
-        <MessageId>4</MessageId>
-        <ChatId>1</ChatId>
-        <SenderId>102</SenderId>
-        <Timestamp>4/9/2024 12:04:23 PM</Timestamp>
-        <Content>file/path</Content>
-        <Status>Received</Status>
-        <Type>photo</Type>
-      </Message>
-    </Messages>
-  </Chat>
-  <Chat>
-    <ChatId>3</ChatId>
-    <SenderId>102</SenderId>
-    <ReceiverId>103</ReceiverId>
-    <Messages>
-      <Message>
-        <MessageId>5</MessageId>
-        <ChatId>1</ChatId>
-        <SenderId>102</SenderId>
-        <Timestamp>4/9/2024 12:05:01 PM</Timestamp>
-        <Content>Hello!</Content>
-        <Status>Sent</Status>
-        <Type>text</Type>
-        <Type>message</Type>
-      </Message>
-      <Message>
-        <MessageId>6</MessageId>
-        <ChatId>1</ChatId>
-        <SenderId>103</SenderId>
-        <Timestamp>4/9/2024 11:05:01 PM</Timestamp>
-        <Content>file/path</Content>
-        <Status>Received</Status>
-        <Type>file</Type>
-      </Message>
-    </Messages>
-  </Chat>
-  <Chat>
-    <ChatId>4</ChatId>
-    <SenderId>103</SenderId>
-    <ReceiverId>102</ReceiverId>
-    <Messages>
-      <Message>
-        <MessageId>7</MessageId>
-        <ChatId>1</ChatId>
-        <SenderId>102</SenderId>
-        <Timestamp>4/10/2024 12:05:22 PM</Timestamp>
-        <Content>Hello!</Content>
-        <Status>Sent</Status>
-        <Type>text</Type>
-        <Type>message</Type>
-      </Message>
-      <Message>
-        <MessageId>8</MessageId>
-        <ChatId>1</ChatId>
-        <SenderId>103</SenderId>
-        <Timestamp>4/10/2024 11:05:22 PM</Timestamp>
-        <Content>file/path</Content>
-        <Status>Received</Status>
-        <Type>video</Type>
-      </Message>
-    </Messages>
-  </Chat>
-  <Chat>
-    <ChatId>5</ChatId>
-    <SenderId>102</SenderId>
-    <ReceiverId>105</ReceiverId>
-    <Messages>
-      <Message>
-        <MessageId>9</MessageId>
-        <ChatId>1</ChatId>
-        <SenderId>102</SenderId>
-        <Timestamp>4/10/2024 12:13:44 PM</Timestamp>
-        <Content>Hello!</Content>
-        <Status>Sent</Status>
-        <Type>text</Type>
-        <Type>message</Type>
-      </Message>
-      <Message>
-        <MessageId>10</MessageId>
-        <ChatId>1</ChatId>
-        <SenderId>102</SenderId>
-        <Timestamp>4/10/2024 13:13:44 PM</Timestamp>
-        <Content>file/path</Content>
-        <Status>Received</Status>
-        <Type>voice</Type>
-      </Message>
-    </Messages>
-  </Chat>
 	<Chat>
-		<ChatId>5</ChatId>
-		<SenderId>105</SenderId>
-		<ReceiverId>102</ReceiverId>
+		<ChatId>1</ChatId>
+		<SenderId>1</SenderId>
+		<ReceiverId>2</ReceiverId>
 		<Messages>
 			<Message>
-				<MessageId>9</MessageId>
+				<MessageId>1</MessageId>
 				<ChatId>1</ChatId>
-				<SenderId>102</SenderId>
-				<Timestamp>4/10/2024 12:13:44 PM</Timestamp>
-				<Content>Hello!</Content>
-				<Status>Sent</Status>
+				<SenderId>1</SenderId>
+				<Timestamp>4/9/2024 11:03:58 PM</Timestamp>
+				<Content>Salut, ce faci?</Content>
+				<Status>Seen</Status>
 				<Type>text</Type>
-				<Type>message</Type>
 			</Message>
 			<Message>
-				<MessageId>10</MessageId>
+				<MessageId>2</MessageId>
 				<ChatId>1</ChatId>
-				<SenderId>102</SenderId>
-				<Timestamp>4/10/2024 13:13:44 PM</Timestamp>
-				<Content>file/path</Content>
+				<SenderId>2</SenderId>
+				<Timestamp>4/9/2024 12:03:58 PM</Timestamp>
+				<Content>Bine, tu?</Content>
 				<Status>Received</Status>
-				<Type>voice</Type>
+				<Type>text</Type>
 			</Message>
 		</Messages>
 	</Chat>

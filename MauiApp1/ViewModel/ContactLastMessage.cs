@@ -1,12 +1,14 @@
-﻿using System;
+﻿using MauiApp1.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MauiApp1
+namespace MauiApp1.ViewModel
 {
-    public class UserMessage
+    public class ContactLastMessage
     {
         public string ContactName { get; }
         public string ContactProfilePhotoPath { get; }
@@ -14,7 +16,7 @@ namespace MauiApp1
         public string LastMessageTime { get; }
         public string LastMessageStatus { get; }
 
-        public UserMessage(string contactName, string contactProfilePhotoPath, string lastMessage, string lastMessageTime, string lastMessageStatus)
+        public ContactLastMessage(string contactName, string contactProfilePhotoPath, string lastMessage, string lastMessageTime, string lastMessageStatus)
         {
             ContactName = contactName;
             ContactProfilePhotoPath = contactProfilePhotoPath;
