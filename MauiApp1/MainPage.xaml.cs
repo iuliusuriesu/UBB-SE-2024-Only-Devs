@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using MauiApp1.Model;
+using System.Collections.ObjectModel;
 
 namespace MauiApp1
 {
@@ -7,6 +8,8 @@ namespace MauiApp1
         public MainPage()
         {
             InitializeComponent();
+
+            Repository repo = new Repository("Data/users.xml", "Data/chats.xml");
 
             this.BindingContext = new UserMessageViewModel();
         }

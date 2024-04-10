@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace MauiApp1.Model
 {
@@ -12,30 +13,16 @@ namespace MauiApp1.Model
         List<Chat> allChats;
         Dictionary<int, List<Chat>> chatsByUser;
 
-        public Repository()
+        public Repository(string usersFilePath, string chatsFilePath)
         {
-            allUsers = ReadUsers();
-            allChats = ReadChats();
+            allUsers = Utils.ReadUsersFromXml(usersFilePath);
+            allChats = Utils.ReadChatsFromXml(chatsFilePath);
 
             chatsByUser = new Dictionary<int, List<Chat>>();
             foreach (User user in allUsers)
             {
                 chatsByUser[user.userId] = assignChatsToUser(user.userId);
             }
-        }
-
-        private List<User> ReadUsers()
-        {
-            List<User> userList = new List<User>();
-
-            return userList;
-        }
-
-        private List<Chat> ReadChats()
-        {
-            List<Chat> chatList = new List<Chat>();
-
-            return chatList;
         }
 
         private List<Chat> assignChatsToUser(int userId)

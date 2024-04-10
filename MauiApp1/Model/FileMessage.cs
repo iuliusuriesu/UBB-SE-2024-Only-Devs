@@ -1,6 +1,4 @@
-﻿using MauiApp1.Model;
-
-namespace Lab3
+﻿namespace MauiApp1.Model
 {
     public class FileMessage : Message
     {

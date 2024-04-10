@@ -19,7 +19,8 @@ namespace MauiApp1
                 new UserMessage("David Tripon", "Ce ma enerveaza materia asta", "Read", "david.png", "10:29"),
                 new UserMessage("Teodora Vlad", "Imi place de Razvan", "New", "teo.png", "09:34"),
                 new UserMessage("Dalia Utiu", "Azi am meci", "Waiting", "dalia.png", "09:12"),
-                new UserMessage("Denisa Vince", "Ne uitam la cursa?", "Received", "deni.png", "08:59")
+                new UserMessage("Denisa Vince", "Ne uitam la cursa?", "Received", "deni.png", "08:59"),
+                new UserMessage("Iulius Uriesu", "Esti un invingator", "Seen", "iulius.png", "07:07")
             };
         }
     }
