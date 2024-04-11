@@ -6,7 +6,7 @@ namespace MauiApp1
 {
     public partial class MainPage : ContentPage
     {
-        private MainPageViewModel viewModel;
+        private readonly MainPageViewModel viewModel;
 
         public MainPage(MainPageViewModel viewModel)
         {
@@ -23,11 +23,10 @@ namespace MauiApp1
             ((CollectionView)sender).SelectedItem = null;
         }
 
-        private void OnTextChanged(object sender, TextChangedEventArgs e)
+        public void OnSearchBarTextChanged(object sender, TextChangedEventArgs e)
         {
             string text = e.NewTextValue;
             viewModel.FilterContacts(text);
-            this.BindingContext = viewModel;
         }
     }
 

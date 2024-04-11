@@ -13,7 +13,7 @@
         <HorizontalStackLayout HorizontalOptions="FillAndExpand" Spacing="50">
             <Label Text="All Messages" FontSize="18" HorizontalOptions="StartAndExpand" Padding="10" />
             <SearchBar Placeholder="Search..." HorizontalOptions="EndAndExpand" WidthRequest="200" 
-                       TextChanged="OnTextChanged" />
+                       TextChanged="OnSearchBarTextChanged" />
         </HorizontalStackLayout>
 
         <!-- Dyanmic list of users -->

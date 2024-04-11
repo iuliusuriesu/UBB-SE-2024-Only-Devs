@@ -14,20 +14,7 @@ namespace MauiApp1.ViewModel
     {
         private const int userId = 1;
         private readonly Service service;
-
-        private ObservableCollection<ContactLastMessage> _contacts;
-        public ObservableCollection<ContactLastMessage> Contacts
-        {
-            get => _contacts;
-            set
-            {
-                if (_contacts != value)
-                {
-                    _contacts = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
+        public ObservableCollection<ContactLastMessage> Contacts { get; private set; }
 
         public MainPageViewModel(Service service)
         {
@@ -38,15 +25,17 @@ namespace MauiApp1.ViewModel
 
         public void FilterContacts(string searchText)
         {
+            if (searchText == null)
+            {
+                searchText = "";
+            }
+
             List<ContactLastMessage> contacts = service.GetContactLastMessages(userId, searchText);
-            Contacts = new ObservableCollection<ContactLastMessage>(contacts);
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            Contacts.Clear();
+            foreach (var c in contacts)
+            {
+                Contacts.Add(c);
+            }
         }
     }
 }
