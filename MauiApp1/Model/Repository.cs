@@ -16,6 +16,16 @@ namespace MauiApp1.Model
         {
             allUsers = Utils.ReadUsersFromXml(usersFilePath);
             allChats = Utils.ReadChatsFromXml(chatsFilePath);
+            foreach (Chat c in allChats)
+            {
+                SortChatMessages(c);
+            }
+        }
+
+        private void SortChatMessages(Chat chat)
+        {
+            List<Message> sortedMessages = chat.getAllMessages().OrderBy(message => message.GetTimestamp()).ToList();
+            chat.setMessageList(sortedMessages);
         }
 
         public List<Chat> GetChatsByUser(int userId)

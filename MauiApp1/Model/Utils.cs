@@ -23,7 +23,7 @@ namespace MauiApp1.Model
                 }
 
 
-                using (XmlTextReader reader = new XmlTextReader(stream))
+                using (XmlReader reader = XmlReader.Create(stream))
                 {
 
                     while (reader.Read())
@@ -377,6 +377,18 @@ namespace MauiApp1.Model
             }
 
             Console.WriteLine($"Chat data appended to XML file: {filePath}");
+        }
+
+        public static string ToStringWithLeadingZero(int number)
+        {
+            if (number <= 9)
+            {
+                return "0" + number.ToString();
+            }
+            else
+            {
+                return number.ToString();
+            }
         }
     }
 }

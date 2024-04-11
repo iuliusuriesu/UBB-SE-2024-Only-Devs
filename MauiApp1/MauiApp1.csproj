@@ -58,10 +58,18 @@
 
 	<ItemGroup>
 	  <None Remove="Data\chats.xml" />
+	  <None Remove="Data\Photos\photo1.jpg" />
+	  <None Remove="Data\Photos\photo2.jpg" />
+	  <None Remove="Data\Photos\photo3.jpg" />
 	  <None Remove="Data\users.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Include="Data\Photos\photo1.jpg">
+	    <CopyToOutputDirectory></CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Data\Photos\photo2.jpg" />
+	  <MauiImage Include="Data\Photos\photo3.jpg" />
 	  <EmbeddedResource Include="Data\chats.xml">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </EmbeddedResource>

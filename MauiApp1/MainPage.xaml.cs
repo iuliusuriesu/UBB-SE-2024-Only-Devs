@@ -8,6 +8,7 @@ namespace MauiApp1
     {
         private Repository repo;
         private Service service;
+        private Controller controller;
         private const int userId = 1;
 
         public MainPage()
@@ -16,10 +17,19 @@ namespace MauiApp1
             string chatsFilePath = "MauiApp1.Data.chats.xml";
             repo = new Repository(usersFilePath, chatsFilePath);
             service = new Service(repo);
+            controller = new Controller(service);
 
             InitializeComponent();
 
-            this.BindingContext = new ContactLastMessageViewModel(service, userId);
+            controller.SetContactLastMessages(userId, "");
+            this.BindingContext = controller.ContactLastMessages;
+        }
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string text = e.NewTextValue;
+            controller.SetContactLastMessages(userId, text);
+            this.BindingContext = controller.ContactLastMessages;
         }
     }
 
