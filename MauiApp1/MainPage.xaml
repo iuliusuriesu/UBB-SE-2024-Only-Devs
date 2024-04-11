@@ -41,7 +41,6 @@
                                         <Label.Triggers>
                                             <DataTrigger TargetType="Label" Binding="{Binding LastMessageStatus}" Value="New">
                                                 <Setter Property="FontAttributes" Value="Bold" />
-                                                <Setter Property="TextColor" Value="CadetBlue" />
                                             </DataTrigger>
                                         </Label.Triggers>       
                                     </Label>
@@ -52,7 +51,6 @@
                                         <Label.Triggers>
                                             <DataTrigger TargetType="Label" Binding="{Binding LastMessageStatus}" Value="New">
                                                 <Setter Property="FontAttributes" Value="Bold" />
-                                                <Setter Property="TextColor" Value="CadetBlue" />
                                             </DataTrigger>
                                         </Label.Triggers>
                                     </Label>
@@ -60,7 +58,6 @@
                                         <Label.Triggers>
                                             <DataTrigger TargetType="Label" Binding="{Binding LastMessageStatus}" Value="New">
                                                 <Setter Property="FontAttributes" Value="Bold" />
-                                                <Setter Property="TextColor" Value="CadetBlue" />
                                             </DataTrigger>
                                         </Label.Triggers>
                                     </Label>
