@@ -6,30 +6,11 @@ namespace MauiApp1
 {
     public partial class MainPage : ContentPage
     {
-        private Repository repo;
-        private Service service;
-        private Controller controller;
-        private const int userId = 1;
-
-        public MainPage()
+        public MainPage(MainPageViewModel viewModel)
         {
-            string usersFilePath = "MauiApp1.Data.users.xml";
-            string chatsFilePath = "MauiApp1.Data.chats.xml";
-            repo = new Repository(usersFilePath, chatsFilePath);
-            service = new Service(repo);
-            controller = new Controller(service);
-
             InitializeComponent();
 
-            controller.SetContactLastMessages(userId, "");
-            this.BindingContext = controller.ContactLastMessages;
-        }
-
-        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            string text = e.NewTextValue;
-            controller.SetContactLastMessages(userId, text);
-            this.BindingContext = controller.ContactLastMessages;
+            this.BindingContext = viewModel;
         }
     }
 

@@ -13,11 +13,11 @@
         <HorizontalStackLayout HorizontalOptions="FillAndExpand" Spacing="50">
             <Label Text="All Messages" FontSize="18" HorizontalOptions="StartAndExpand" Padding="10" />
             <SearchBar Placeholder="Search" HorizontalOptions="EndAndExpand" WidthRequest="200" 
-                       TextChanged="SearchBar_TextChanged" />
+                       Text="{Binding SearchText, Mode=TwoWay}" />
         </HorizontalStackLayout>
 
         <!-- Dyanmic list of users -->
-        <CollectionView x:Name="ContactList" ItemsSource="{Binding}">
+        <CollectionView x:Name="ContactList" ItemsSource="{Binding Contacts}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <VerticalStackLayout>
