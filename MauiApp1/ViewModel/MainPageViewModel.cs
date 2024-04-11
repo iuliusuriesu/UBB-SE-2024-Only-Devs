@@ -53,6 +53,11 @@ namespace MauiApp1.ViewModel
 
         private void FilterContacts(string searchText)
         {
+            if (searchText == null)
+            {
+                searchText = "";
+            }
+
             List<ContactLastMessage> contacts = service.GetContactLastMessages(userId, searchText);
             Contacts = new ObservableCollection<ContactLastMessage>(contacts);
         }
