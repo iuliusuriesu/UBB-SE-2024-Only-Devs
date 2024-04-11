@@ -29,21 +29,6 @@ namespace MauiApp1.ViewModel
             }
         }
 
-        private string _searchText;
-        public string SearchText
-        {
-            get => _searchText;
-            set
-            {
-                if (value != _searchText)
-                {
-                    _searchText = value;
-                    OnPropertyChanged();
-                    FilterContacts(_searchText);
-                }
-            }
-        }
-
         public MainPageViewModel(Service service)
         {
             this.service = service;
@@ -51,13 +36,8 @@ namespace MauiApp1.ViewModel
             Contacts = new ObservableCollection<ContactLastMessage>(contacts);
         }
 
-        private void FilterContacts(string searchText)
+        public void FilterContacts(string searchText)
         {
-            if (searchText == null)
-            {
-                searchText = "";
-            }
-
             List<ContactLastMessage> contacts = service.GetContactLastMessages(userId, searchText);
             Contacts = new ObservableCollection<ContactLastMessage>(contacts);
         }

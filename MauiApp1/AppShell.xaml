@@ -12,4 +12,8 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
+    <ShellContent 
+        ContentTemplate="{DataTemplate local:ChatPage}"
+        Route="ChatPage" />
+
 </Shell>
