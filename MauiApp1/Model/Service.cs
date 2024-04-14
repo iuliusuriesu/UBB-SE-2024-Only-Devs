@@ -108,19 +108,30 @@ namespace MauiApp1.Model
             return contact.profilePhotoPath;
         }
 
-        public List<string> GetChatMessages(int chatId)
+        public List<MessageModel> GetChatMessages(int chatId)
         {
-            List<string> result = new List<string>();
+            List<MessageModel> result = new List<MessageModel>();
 
             Chat? chat = repo.GetChat(chatId);
             if (chat == null) { return result; }
 
             List<Message> messages = chat.getAllMessages();
             foreach (Message m in messages) {
-                result.Add(m.GetMessage());
+                if (m is Message)
+                {
+                    bool incoming = m.GetSenderId() == chat.receiverId;
+                    MessageModel model = new MessageModel("text", incoming, m.GetMessage());
+                    result.Add(model);
+                }
             }
 
             return result;
+        }
+
+        public void AddTextMessageToChat(int chatId, int senderId, string text)
+        {
+            Message message = new TextMessage(0, chatId, senderId, DateTime.Now, "", text);
+            repo.AddMessageToChat(chatId, message);
         }
     }
 }

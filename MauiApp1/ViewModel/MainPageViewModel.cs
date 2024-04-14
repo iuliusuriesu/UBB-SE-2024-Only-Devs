@@ -12,15 +12,26 @@ namespace MauiApp1.ViewModel
 {
     public class MainPageViewModel
     {
-        private const int userId = 1;
+        private int userId;
         private readonly Service service;
         public ObservableCollection<ContactLastMessage> Contacts { get; private set; }
 
-        public MainPageViewModel(Service service)
+        public MainPageViewModel(Service service, int userId)
         {
             this.service = service;
+            this.userId = userId;
             List<ContactLastMessage> contacts = service.GetContactLastMessages(userId, "");
             Contacts = new ObservableCollection<ContactLastMessage>(contacts);
+        }
+
+        public void RefreshContacts(string searchText)
+        {
+            List<ContactLastMessage> contacts = service.GetContactLastMessages(userId, searchText);
+            Contacts.Clear();
+            foreach (var c in contacts)
+            {
+                Contacts.Add(c);
+            }
         }
 
         public void FilterContacts(string searchText)
@@ -29,13 +40,7 @@ namespace MauiApp1.ViewModel
             {
                 searchText = "";
             }
-
-            List<ContactLastMessage> contacts = service.GetContactLastMessages(userId, searchText);
-            Contacts.Clear();
-            foreach (var c in contacts)
-            {
-                Contacts.Add(c);
-            }
+            RefreshContacts(searchText);
         }
     }
 }

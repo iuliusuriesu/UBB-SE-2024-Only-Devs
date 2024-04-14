@@ -17,6 +17,8 @@ namespace MauiApp1
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            int userId = 1;
+
             builder.Services.AddSingleton<Repository>(serviceProvider =>
             {
                 string localPath = @"D:\UBB\Semestrul 4\Ingineria Sistemelor Software\MauiApp1\";
@@ -34,7 +36,7 @@ namespace MauiApp1
             builder.Services.AddTransient<MainPageViewModel>(serviceProvider =>
             {
                 var service = serviceProvider.GetRequiredService<Service>();
-                return new MainPageViewModel(service);
+                return new MainPageViewModel(service, userId);
             });
 
             builder.Services.AddTransient<MainPage>(serviceProvider =>
@@ -46,7 +48,7 @@ namespace MauiApp1
             builder.Services.AddTransient<ChatPageViewModel>(serviceProvider =>
             {
                 var service = serviceProvider.GetRequiredService<Service>();
-                return new ChatPageViewModel(service);
+                return new ChatPageViewModel(service, userId);
             });
 
             builder.Services.AddTransient<ChatPage>(serviceProvider =>

@@ -12,6 +12,7 @@ namespace MauiApp1.ViewModel
 {
     public class ChatPageViewModel : INotifyPropertyChanged
     {
+        private int userId;
         private readonly Service service;
         private int chatId;
 
@@ -45,12 +46,23 @@ namespace MauiApp1.ViewModel
             }
         }
 
-        public ObservableCollection<string> Messages { get; private set; }
+        public ObservableCollection<MessageModel> Messages { get; private set; }
 
-        public ChatPageViewModel(Service service)
+        public ChatPageViewModel(Service service, int userId)
         {
             this.service = service;
-            Messages = new ObservableCollection<string>();
+            this.userId = userId;
+            Messages = new ObservableCollection<MessageModel>();
+        }
+
+        private void RefreshChatMessages()
+        {
+            List<MessageModel> messages = service.GetChatMessages(chatId);
+            Messages.Clear();
+            foreach (MessageModel m in messages)
+            {
+                Messages.Add(m);
+            }
         }
 
         public void SetChatId(int chatId)
@@ -58,13 +70,13 @@ namespace MauiApp1.ViewModel
             this.chatId = chatId;
             ContactName = service.GetContactName(chatId);
             ContactProfilePhotoPath = service.GetContactProfilePhotoPath(chatId);
+            RefreshChatMessages();
+        }
 
-            List<string> messages = service.GetChatMessages(chatId);
-            Messages.Clear();
-            foreach (string m in messages)
-            {
-                Messages.Add(m);
-            }
+        public void AddTextMessageToChat(string text)
+        {
+            service.AddTextMessageToChat(chatId, userId, text);
+            RefreshChatMessages();
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

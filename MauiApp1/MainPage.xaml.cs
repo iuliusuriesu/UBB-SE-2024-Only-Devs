@@ -32,6 +32,13 @@ namespace MauiApp1
                 ((CollectionView)sender).SelectedItem = null;
             }
         }
+
+        protected override void OnNavigatedTo(NavigatedToEventArgs args)
+        {
+            base.OnNavigatedTo(args);
+
+            viewModel.RefreshContacts("");
+        }
     }
 
 }

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.ChatPage"
+             xmlns:local="clr-namespace:MauiApp1"
              Title="Chat">
 
     <!--<VerticalStackLayout>
@@ -13,6 +14,26 @@
 
         <HorizontalStackLayout HeightRequest="100"></HorizontalStackLayout>
     </VerticalStackLayout>-->
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="IncomingTemplate">
+                <Frame BackgroundColor="Gray" Padding="10" HorizontalOptions="Start">
+                    <Label Text="{Binding Text}" TextColor="White" />
+                </Frame>
+            </DataTemplate>
+
+            <DataTemplate x:Key="OutgoingTemplate">
+                <Frame BackgroundColor="Blue" Padding="10" HorizontalOptions="End">
+                    <Label Text="{Binding Text}" TextColor="White" />
+                </Frame>
+            </DataTemplate>
+
+            <local:MessageTemplateSelector x:Key="MessageSelector" 
+                IncomingTemplate="{StaticResource IncomingTemplate}" 
+                OutgoingTemplate="{StaticResource OutgoingTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
 
     <Grid Padding="10">
@@ -66,6 +87,8 @@
         <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="#D3D3D3" HorizontalOptions="FillAndExpand" VerticalOptions="Start" />
 
         <!-- Content in the second row -->
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Messages}" ItemTemplate="{StaticResource MessageSelector}">
+        </CollectionView>
 
         <!-- Thin line separator -->
         <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="#D3D3D3" HorizontalOptions="FillAndExpand" VerticalOptions="End" />
@@ -103,7 +126,7 @@
             <!--<Label Grid.Row="0" Grid.Column="1" Text="I" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />-->
             <!--<Label Grid.Row="0" Grid.Column="2" Text="V" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />-->
             <!--<Label Grid.Row="0" Grid.Column="3" Text="Enter message..." FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />-->
-            <Entry Grid.Row="0" Grid.Column="3" Placeholder="Enter message..." FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Entry Grid.Row="0" Grid.Column="3" x:Name="MessageInput" Placeholder="Enter message..." FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
 
             <!--<Label Grid.Row="0" Grid.Column="4" Text="S" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />-->
             <ImageButton Clicked="OnSendClicked" Source="send.webp" Grid.Row="0" Grid.Column="4" WidthRequest="30"
