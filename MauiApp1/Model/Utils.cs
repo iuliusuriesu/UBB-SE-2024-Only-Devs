@@ -13,17 +13,17 @@ namespace MauiApp1.Model
         public static List<User> ReadUsersFromXml(string filePath)
         {
             List<User> users = new List<User>();
-            var assembly = Assembly.GetExecutingAssembly();
-            using (Stream? stream = assembly.GetManifestResourceStream(filePath))
+            
+            try
             {
-                if (stream == null)
+                if (!File.Exists(filePath))
                 {
                     Console.WriteLine($"File not found: {filePath}");
                     return users;
                 }
 
 
-                using (XmlReader reader = XmlReader.Create(stream))
+                using (XmlReader reader = XmlReader.Create(filePath))
                 {
 
                     while (reader.Read())
@@ -68,6 +68,10 @@ namespace MauiApp1.Model
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
 
             return users;
@@ -158,16 +162,16 @@ namespace MauiApp1.Model
         public static List<Chat> ReadChatsFromXml(string filePath)
         {
             List<Chat> chats = new List<Chat>();
-            var assembly = Assembly.GetExecutingAssembly();
-            using (Stream? stream = assembly.GetManifestResourceStream(filePath))
+            
+            try
             {
-                if (stream == null)
+                if (!File.Exists(filePath))
                 {
                     Console.WriteLine($"File not found: {filePath}");
                     return chats;
                 }
 
-                using (XmlReader reader = XmlReader.Create(stream))
+                using (XmlReader reader = XmlReader.Create(filePath))
                 {
                     while (reader.Read())
                     {
@@ -216,6 +220,10 @@ namespace MauiApp1.Model
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
 
             return chats;

@@ -79,8 +79,45 @@ namespace MauiApp1.Model
                 string time = Utils.ToStringWithLeadingZero(dt.Day) + "." + Utils.ToStringWithLeadingZero(dt.Month) + "\n";
                 time = time + Utils.ToStringWithLeadingZero(dt.Hour) + ":" + Utils.ToStringWithLeadingZero(dt.Minute);
 
-                ContactLastMessage clm = new ContactLastMessage(u.name, u.profilePhotoPath, msg, time, m.GetStatus());
+                ContactLastMessage clm = new ContactLastMessage(u.name, u.profilePhotoPath, msg, time, m.GetStatus(), chat.chatId);
                 result.Add(clm);
+            }
+
+            return result;
+        }
+
+        public string GetContactName(int chatId)
+        {
+            Chat? chat = repo.GetChat(chatId);
+            if (chat ==  null) { return "";  }
+
+            User? contact = repo.GetUser(chat.receiverId);
+            if (contact == null) { return "";  }
+
+            return contact.name;
+        }
+
+        public string GetContactProfilePhotoPath(int chatId)
+        {
+            Chat? chat = repo.GetChat(chatId);
+            if (chat == null) { return ""; }
+
+            User? contact = repo.GetUser(chat.receiverId);
+            if (contact == null) { return ""; }
+
+            return contact.profilePhotoPath;
+        }
+
+        public List<string> GetChatMessages(int chatId)
+        {
+            List<string> result = new List<string>();
+
+            Chat? chat = repo.GetChat(chatId);
+            if (chat == null) { return result; }
+
+            List<Message> messages = chat.getAllMessages();
+            foreach (Message m in messages) {
+                result.Add(m.GetMessage());
             }
 
             return result;

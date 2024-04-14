@@ -16,13 +16,16 @@ namespace MauiApp1.ViewModel
         public string LastMessageTime { get; }
         public string LastMessageStatus { get; }
 
-        public ContactLastMessage(string contactName, string contactProfilePhotoPath, string lastMessage, string lastMessageTime, string lastMessageStatus)
+        public int ChatId { get; }
+
+        public ContactLastMessage(string contactName, string contactProfilePhotoPath, string lastMessage, string lastMessageTime, string lastMessageStatus, int chatId)
         {
             ContactName = contactName;
             ContactProfilePhotoPath = contactProfilePhotoPath;
             LastMessage = lastMessage;
             LastMessageTime = lastMessageTime;
             LastMessageStatus = lastMessageStatus;
+            ChatId = chatId;
         }
     }
 }

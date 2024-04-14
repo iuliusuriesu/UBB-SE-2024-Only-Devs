@@ -57,11 +57,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Data\chats.xml" />
 	  <None Remove="Data\Photos\photo1.jpg" />
 	  <None Remove="Data\Photos\photo2.jpg" />
 	  <None Remove="Data\Photos\photo3.jpg" />
-	  <None Remove="Data\users.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -70,12 +68,6 @@
 	  </MauiImage>
 	  <MauiImage Include="Data\Photos\photo2.jpg" />
 	  <MauiImage Include="Data\Photos\photo3.jpg" />
-	  <EmbeddedResource Include="Data\chats.xml">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Data\users.xml">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -88,6 +80,15 @@
 	  <MauiXaml Update="ChatPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Data\chats.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Data\users.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>

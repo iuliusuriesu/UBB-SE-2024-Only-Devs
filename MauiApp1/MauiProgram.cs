@@ -19,9 +19,10 @@ namespace MauiApp1
 
             builder.Services.AddSingleton<Repository>(serviceProvider =>
             {
-                string usersResource = "MauiApp1.Data.users.xml";
-                string chatsResource = "MauiApp1.Data.chats.xml";
-                return new Repository(usersResource, chatsResource);
+                string localPath = @"D:\UBB\Semestrul 4\Ingineria Sistemelor Software\MauiApp1\";
+                string usersFilePath = localPath + @"MauiApp1\Data\users.xml";
+                string chatsFilePath = localPath + @"MauiApp1\Data\chats.xml";
+                return new Repository(usersFilePath, chatsFilePath);
             });
 
             builder.Services.AddSingleton<Service>(serviceProvider =>
@@ -40,6 +41,18 @@ namespace MauiApp1
             {
                 var viewModel = serviceProvider.GetRequiredService<MainPageViewModel>();
                 return new MainPage(viewModel);
+            });
+
+            builder.Services.AddTransient<ChatPageViewModel>(serviceProvider =>
+            {
+                var service = serviceProvider.GetRequiredService<Service>();
+                return new ChatPageViewModel(service);
+            });
+
+            builder.Services.AddTransient<ChatPage>(serviceProvider =>
+            {
+                var viewModel = serviceProvider.GetRequiredService<ChatPageViewModel>();
+                return new ChatPage(viewModel);
             });
 
 #if DEBUG

@@ -27,7 +27,7 @@ namespace MauiApp1.Model
 
         public int GetMessageId() { return messageId; }
         public int GetChatId() { return chatId; }
-        public int GetSenderId() {  return senderId; }
+        public int GetSenderId() { return senderId; }
         public DateTime GetTimestamp() { return timestamp; }
         public string GetStatus() { return status; }
     }

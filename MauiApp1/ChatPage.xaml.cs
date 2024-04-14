@@ -1,13 +1,37 @@
+using MauiApp1.ViewModel;
+
 namespace MauiApp1;
 
+[QueryProperty(nameof(ChatId), "chatId")]
 public partial class ChatPage : ContentPage
 {
-    public string MessegeText { get; set; }
+    private readonly ChatPageViewModel viewModel;
 
-    void OnBackClicked(object sender, EventArgs e)
+    private int _chatId;
+    public int ChatId
     {
-
+        get => _chatId;
+        set
+        {
+            _chatId = value;
+            viewModel.SetChatId(_chatId);
+        }
     }
+
+    public ChatPage(ChatPageViewModel viewModel)
+    {
+        InitializeComponent();
+        
+        this.viewModel = viewModel;
+        this.BindingContext = viewModel;
+    }
+
+    private async void OnBackClicked(object sender, EventArgs e)
+    {
+        string route = "///MainPage";
+        await Shell.Current.GoToAsync(route);
+    }
+
     void OnCallClicked(object sender, EventArgs e)
     {
 
@@ -31,11 +55,5 @@ public partial class ChatPage : ContentPage
     void OnSendClicked(object sender, EventArgs e)
     {
 
-    }
-
-    public ChatPage()
-    {
-        InitializeComponent();
-        this.BindingContext = this;
     }
 }

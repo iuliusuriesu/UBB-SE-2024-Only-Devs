@@ -45,7 +45,14 @@
             <!--<Label Grid.Row="0" Grid.Column="0" Text="Back" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />-->
 
             <!-- Content in the first row and second column -->
-            <Label Grid.Row="0" Grid.Column="1" Text="Nume si Prenume" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+            <HorizontalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"> 
+                <Border Grid.Column="0" WidthRequest="60" HeightRequest="60"
+                        Stroke="Transparent" StrokeShape="RoundRectangle 30"
+                        Margin="0,0,15,0">
+                    <Image Source="{Binding ContactProfilePhotoPath}" Aspect="AspectFill" />
+                </Border>
+                <Label Text="{Binding ContactName}" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+            </HorizontalStackLayout>
 
             <!-- Content in the first row and third column -->
             <ImageButton Clicked="OnCallClicked" Source="call.png" Grid.Row="0" Grid.Column="2" WidthRequest="50"
@@ -59,7 +66,6 @@
         <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="#D3D3D3" HorizontalOptions="FillAndExpand" VerticalOptions="Start" />
 
         <!-- Content in the second row -->
-        <Label Grid.Row="1" Text="Mesaje" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
 
         <!-- Thin line separator -->
         <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="#D3D3D3" HorizontalOptions="FillAndExpand" VerticalOptions="End" />
@@ -97,7 +103,7 @@
             <!--<Label Grid.Row="0" Grid.Column="1" Text="I" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />-->
             <!--<Label Grid.Row="0" Grid.Column="2" Text="V" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />-->
             <!--<Label Grid.Row="0" Grid.Column="3" Text="Enter message..." FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />-->
-            <Entry Grid.Row="0" Grid.Column="3" Text="{Binding MessegeText}" Placeholder="Enter message..." FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Entry Grid.Row="0" Grid.Column="3" Placeholder="Enter message..." FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
 
             <!--<Label Grid.Row="0" Grid.Column="4" Text="S" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />-->
             <ImageButton Clicked="OnSendClicked" Source="send.webp" Grid.Row="0" Grid.Column="4" WidthRequest="30"

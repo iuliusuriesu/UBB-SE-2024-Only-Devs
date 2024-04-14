@@ -16,17 +16,21 @@ namespace MauiApp1
             this.BindingContext = viewModel;
         }
 
-        private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            await Shell.Current.GoToAsync(nameof(ChatPage));
-
-            ((CollectionView)sender).SelectedItem = null;
-        }
-
         public void OnSearchBarTextChanged(object sender, TextChangedEventArgs e)
         {
             string text = e.NewTextValue;
             viewModel.FilterContacts(text);
+        }
+
+        private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection.FirstOrDefault() is ContactLastMessage selectedContact)
+            {
+                string route = $"///ChatPage?chatId={selectedContact.ChatId}";
+                await Shell.Current.GoToAsync(route);
+
+                ((CollectionView)sender).SelectedItem = null;
+            }
         }
     }
 
