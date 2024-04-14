@@ -71,7 +71,7 @@ namespace MauiApp1.Model
             Chat? chat = GetChat(chatId);
             if (chat == null) { return; }
 
-            int oppositeChatId = (chatId % 2 == 0 ? chatId / 2 : chatId * 2);
+            int oppositeChatId = (chatId % 2 == 0 ? chatId - 1 : chatId + 1);
             Chat? oppositeChat = GetChat(oppositeChatId);
             if (oppositeChat == null) { return; }
 

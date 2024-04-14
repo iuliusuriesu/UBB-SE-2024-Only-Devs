@@ -119,7 +119,7 @@ namespace MauiApp1.Model
             foreach (Message m in messages) {
                 if (m is Message)
                 {
-                    bool incoming = m.GetSenderId() == chat.receiverId;
+                    bool incoming = (m.GetSenderId() == chat.receiverId);
                     MessageModel model = new MessageModel("text", incoming, m.GetMessage());
                     result.Add(model);
                 }
