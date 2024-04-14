@@ -387,6 +387,72 @@ namespace MauiApp1.Model
             Console.WriteLine($"Chat data appended to XML file: {filePath}");
         }
 
+        public static void WriteChatsToXml(List<Chat> chats, string filePath)
+        {
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+
+            using (XmlWriter writer = XmlWriter.Create(filePath, settings))
+            {
+                writer.WriteStartDocument();
+                writer.WriteStartElement("Chats");
+
+                foreach (Chat c in chats)
+                {
+                    writer.WriteStartElement("Chat");
+                    writer.WriteElementString("ChatId", c.chatId.ToString());
+                    writer.WriteElementString("SenderId", c.senderId.ToString());
+                    writer.WriteElementString("ReceiverId", c.receiverId.ToString());
+
+                    writer.WriteStartElement("Messages");
+
+                    foreach (Message m in c.getAllMessages())
+                    {
+                        writer.WriteStartElement("Message");
+                        writer.WriteElementString("MessageId", m.GetMessageId().ToString());
+                        writer.WriteElementString("ChatId", m.GetChatId().ToString());
+                        writer.WriteElementString("SenderId", m.GetSenderId().ToString());
+                        writer.WriteElementString("Timestamp", m.GetTimestamp().ToString());
+                        writer.WriteElementString("Content", m.GetMessage());
+                        writer.WriteElementString("Status", m.GetStatus());
+
+                        if (m.GetType() == typeof(TextMessage))
+                        {
+                            writer.WriteElementString("Type", "text");
+                        }
+
+                        if (m.GetType() == typeof(VideoMessage))
+                        {
+                            writer.WriteElementString("Type", "video");
+                        }
+                        else
+
+                        if (m.GetType() == typeof(VoiceMessage))
+                        {
+                            writer.WriteElementString("Type", "voice");
+                        }
+
+                        else
+
+                        if (m.GetType() == typeof(PhotoMessage))
+                        {
+                            writer.WriteElementString("Type", "photo");
+                        }
+                        else
+                        {
+                            writer.WriteElementString("Type", "message");
+                        }
+
+                        //writer.WriteElementString("Type", m.Type);
+                        writer.WriteEndElement(); // Message
+                    }
+
+                    writer.WriteEndElement(); // Messages
+                    writer.WriteEndElement(); // Chat
+                }
+            }
+        }
+
         public static string ToStringWithLeadingZero(int number)
         {
             if (number <= 9)
