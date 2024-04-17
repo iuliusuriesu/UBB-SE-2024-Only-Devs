@@ -87,11 +87,14 @@
         <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="#D3D3D3" HorizontalOptions="FillAndExpand" VerticalOptions="Start" />
 
         <!-- Content in the second row -->
-        <CollectionView Grid.Row="1" ItemsSource="{Binding Messages}" ItemTemplate="{StaticResource MessageSelector}">
-        </CollectionView>
+        <ScrollView Grid.Row="1">
+            <CollectionView ItemsSource="{Binding Messages}" ItemTemplate="{StaticResource MessageSelector}" Margin="10">
+            </CollectionView>
+        </ScrollView>
+        
 
         <!-- Thin line separator -->
-        <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="#D3D3D3" HorizontalOptions="FillAndExpand" VerticalOptions="End" />
+        <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="#D3D3D3" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
 
         <!-- Content in the third row -->
         <!--<Label Grid.Row="2" Text="Chat control" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />-->
